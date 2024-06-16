@@ -2,15 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
-use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
  */
-class PostFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,11 +18,8 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $tilte = fake()->sentence(6),
-            'category_id' => Category::factory(),
-            'author_id' => User::factory(),
+            'name' => $tilte = fake()->unique()->sentence(rand(1, 2), false),
             'slug' => Str::slug($tilte),
-            'body' => fake()->text(),
         ];
     }
 }
